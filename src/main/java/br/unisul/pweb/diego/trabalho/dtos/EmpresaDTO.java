@@ -9,6 +9,9 @@ public class EmpresaDTO implements Serializable{
 			
 		private Integer id;
 		private String nome;
+		private String cidade;
+		private String uf;
+		private String telefone;
 			
 		public EmpresaDTO() {
 				
@@ -28,6 +31,24 @@ public class EmpresaDTO implements Serializable{
 		}
 		public void setNome(String nome) {
 			this.nome = nome;
+		}
+		public String getCidade() {
+			return cidade;
+		}
+		public void setCidade(String cidade) {
+			this.cidade = cidade;
+		}
+		public String getUf() {
+			return uf;
+		}
+		public void setUf(String uf) {
+			this.uf = uf;
+		}
+		public String getTelefone() {
+			return telefone;
+		}
+		public void setTelefone(String telefone) {
+			this.telefone = telefone;
 		}
 		
 }

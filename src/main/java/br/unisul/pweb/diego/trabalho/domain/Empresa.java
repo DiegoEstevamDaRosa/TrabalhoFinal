@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 public class Empresa implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -20,13 +21,13 @@ public class Empresa implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	//private Integer telefone;
+	private String cidade;
+	private String uf;
+	private String telefone;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="empresa")
-	
 	private List<Departamento> departamentos = new ArrayList<>();
-	
 	
 	public Empresa() {
 		
@@ -35,6 +36,13 @@ public class Empresa implements Serializable{
 		super();
 		this.id = id;
 		this.nome = nome;
+	}
+	
+	public List<Departamento> getDepartamentos() {
+		return departamentos;
+	}
+	public void setDepartamentos(List<Departamento> departamentos) {
+		this.departamentos = departamentos;
 	}
 	public Integer getId() {
 		return id;
@@ -48,12 +56,46 @@ public class Empresa implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<Departamento> getDepartamentos() {
-		return departamentos;
+	public String getCidade() {
+		return cidade;
 	}
-	public void setDepartamentos(List<Departamento> departamentos) {
-		this.departamentos = departamentos;
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
-	
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empresa other = (Empresa) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 	
 }
