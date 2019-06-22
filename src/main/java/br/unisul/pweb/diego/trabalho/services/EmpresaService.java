@@ -1,5 +1,6 @@
 package br.unisul.pweb.diego.trabalho.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,24 @@ public class EmpresaService {
 		Optional<Empresa> ob = empRep.findById(id);
 		return ob.orElse(null);
 	}
-	
 	// INSERE
 	public Empresa insert (Empresa ob) {
 		ob.setId(null);
 		return empRep.save(ob);
 	}
 	//DELETAR
-		public void delete (Integer id) {
-			find(id);
-			empRep.deleteById(id);
-		}
+	public void delete (Integer id) {
+		find(id);
+		empRep.deleteById(id);
+	}
+	//ATUALIZA
+	public Empresa update (Empresa obj) {
+		find(obj.getId());
+		return empRep.save(obj);
+	}
+	//LISTAR TODAS
+	public List<Empresa> findAll(){
+	return empRep.findAllByOrderByNome();
+	}
+	
 }

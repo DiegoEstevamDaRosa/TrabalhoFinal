@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class Empresa implements Serializable{
+public class Empresa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -29,15 +29,28 @@ public class Empresa implements Serializable{
 	@OneToMany(mappedBy="empresa")
 	private List<Departamento> departamentos = new ArrayList<>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="empresa")
+	private List<Vaga> vagas = new ArrayList<>();
+	
+	
 	public Empresa() {
 		
 	}
-	public Empresa(Integer id, String nome) {
+	public Empresa(Integer id, String nome, String cidade, String uf, String telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.telefone = telefone;
 	}
-	
+	public List<Vaga> getVagas() {
+		return vagas;
+	}
+	public void setVagas(List<Vaga> vagas) {
+		this.vagas = vagas;
+	}
 	public List<Departamento> getDepartamentos() {
 		return departamentos;
 	}
