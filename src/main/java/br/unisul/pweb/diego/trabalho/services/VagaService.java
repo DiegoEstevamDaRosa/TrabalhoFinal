@@ -12,23 +12,23 @@ import br.unisul.pweb.diego.trabalho.repositories.VagaRepository;
 public class VagaService {
 		
 	@Autowired
-	private VagaRepository rep;
+	private VagaRepository vagaRep;
 	@Autowired
-	private EmpresaService empresaService;
+	private EmpresaService empService;
 	@Autowired
-	private DepartamentoService departamentoService;
+	private DepartamentoService deptService;
 
 	public List<Vaga> findByEmpresa(Integer empresaId) {
-		return rep.findVgtrabalhoEmpresas(empresaId);
+		return vagaRep.findVgtrabalhoEmpresas(empresaId);
 	}
 	public List<Vaga> findByDepatamento(Integer departamentoId) {
-		return rep.findVgtrabalhoDepartametos(departamentoId);
+		return vagaRep.findVgtrabalhoDepartametos(departamentoId);
 	}
 	public Vaga insert (Vaga obj) {
 		obj.setId(null);
-		obj.setEmpresa(empresaService.find(obj.getEmpresa().getId()));
-		obj.setDepartamento(departamentoService.find(obj.getDepartamento().getId()));
-		obj = rep.save(obj);
+		obj.setEmpresa(empService.find(obj.getEmpresa().getId()));
+		obj.setDepartamento(deptService.find(obj.getDepartamento().getId()));
+		obj = vagaRep.save(obj);
 		return obj;
 	}
 		

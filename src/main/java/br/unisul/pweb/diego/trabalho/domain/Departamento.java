@@ -36,10 +36,11 @@ public class Departamento implements Serializable {
 	public Departamento() {
 		
 	}
-	public Departamento(Integer id, String nomeDept, String nomeGerente) {
+	public Departamento(Integer id, String nomeDept, String nomeGerente, Empresa empresa) {
 		this.id = id;
 		this.nomeDept = nomeDept;
 		this.nomeGerente = nomeGerente;
+		this.empresa = empresa;
 	}
 	public Integer getId() {
 		return id;
